@@ -1,3 +1,21 @@
-<% @available_flights.each do |flight| %>
-    <%= flight.duration %>
+<%= form_with url: "bookings/new/", method: :get do |f| %>
+  <%= f.hidden_field :passenger_count, :value => params[:passenger_count] %>
+ 
+  
+    <% @available_flights.each do |flight| %>
+      <%= f.radio_button :booking_option, flight.id %>
+      Duration: <%= f.label flight.duration %>
+      <br/>
+      <br/>
+    <% end %>
+  
+   
+  <% if @available_flights.empty? %> 
+      <p>No flights match your search. Please try again.</p>
+  <% else %>  
+      
+      <%= f.submit "Book Flight" %>
+    </div>
+  
+  <% end %>
 <% end %>
