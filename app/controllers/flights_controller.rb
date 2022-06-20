@@ -4,6 +4,9 @@ class FlightsController < ApplicationController
   # GET /flights or /flights.json
   def index
     @airport_options = Airport.all.map { |u| [u.city, u.id] }
+    @available_flights = Flight.where(departure_airport_id: params[:departure_airport_id],
+      arrival_airport_id: params[:arrival_airport_id],
+      date: params[:date])
   end
 
   # GET /flights/1 or /flights/1.json
