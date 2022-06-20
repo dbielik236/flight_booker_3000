@@ -3,7 +3,7 @@ class FlightsController < ApplicationController
 
   # GET /flights or /flights.json
   def index
-    @flights = Flight.all
+    @airport_options = Airport.all.map { |u| [u.city, u.id] }
   end
 
   # GET /flights/1 or /flights/1.json
@@ -65,6 +65,6 @@ class FlightsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def flight_params
-      params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :date, :time, :duration)
+      params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :date, :duration)
     end
 end
