@@ -1,9 +1,15 @@
-<h1>New booking</h1>
+<h1> Booking Information </h1>
 
-<%= render "form", booking: @booking %>
+<p> Your chosen flight </p>
 
-<br>
-
-<div>
-  <%= link_to "Back to bookings", bookings_path %>
-</div>
+<% f = Flight.find_by(id: params[:booking_option]) %>
+<% d = Airport.find_by(id: f.departure_airport_id)%>
+<% a = Airport.find_by(id: f.arrival_airport_id)%>
+Flight ID: <%= f.id %>
+<br/>
+Duration: <%= f.duration %>
+<br/>
+Departure City: <%= d.city %>
+<br/>
+Arrival City: <%= a.city %>
+<%= render partial: "form" %>
