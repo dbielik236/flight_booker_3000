@@ -1,6 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @booking %>
+ <%= @booking.passengers.each do |passenger| %>
+    <%= passenger.name %>
+    <br/>
+<% end %>
+
+
 
 <div>
   <%= link_to "Edit this booking", edit_booking_path(@booking) %> |

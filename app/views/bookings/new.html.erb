@@ -1,15 +1,8 @@
 <h1> Booking Information </h1>
 
-<p> Your chosen flight </p>
+<h2> Your chosen flight </h2>
 
-<% f = Flight.find_by(id: params[:booking_option]) %>
-<% d = Airport.find_by(id: f.departure_airport_id)%>
-<% a = Airport.find_by(id: f.arrival_airport_id)%>
-Flight ID: <%= f.id %>
-<br/>
-Duration: <%= f.duration %>
-<br/>
-Departure City: <%= d.city %>
-<br/>
-Arrival City: <%= a.city %>
+<%= render "summary", flight: @flight %>
+
+
 <%= render partial: "form" %>
