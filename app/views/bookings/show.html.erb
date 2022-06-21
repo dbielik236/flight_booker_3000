@@ -1,15 +1,21 @@
 <p style="color: green"><%= notice %></p>
+<h1> Your Booking is Complete! </h1>
 
- <%= @booking.passengers.each do |passenger| %>
-    <%= passenger.name %>
+<h2> Flight Info </h2>
+  Origin: <%= @booking.flights.first.departure_airport.city %><br/>
+  Destination: <%= @booking.flights.first.arrival_airport.city %><br/>
+  Date: <%= @booking.flights.first.date %><br/>
+  Duration: <%= @booking.flights.first.duration %><br/>
+
+<h2> Passenger Info </h2>
+ <% @booking.passengers.each do |passenger| %>
+   
+    <%= passenger.name %> |
+    <%= passenger.email %> 
     <br/>
 <% end %>
-
-
+<br/>
 
 <div>
-  <%= link_to "Edit this booking", edit_booking_path(@booking) %> |
-  <%= link_to "Back to bookings", bookings_path %>
-
-  <%= button_to "Destroy this booking", @booking, method: :delete %>
+  <%= link_to "Book another flight", flights_path %>
 </div>
